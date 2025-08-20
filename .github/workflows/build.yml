@@ -1,0 +1,28 @@
+name: Build Marp Slides
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Use Marp official GitHub Action
+      - name: Convert slides to PDF, HTML, PPTX
+        uses: marp-team/marp-cli-action@v2
+        with:
+          markdown: slides.md
+          theme: theme/campus-compass.css
+          output: |
+            build/slides.pdf
+            build/slides.html
+            build/slides.pptx
+
+      - name: Upload slides
+        uses: actions/upload-artifact@v3
+        with:
+          name: marp-slides
+          path: build/
