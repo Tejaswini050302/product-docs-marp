@@ -19,25 +19,31 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install Marp CLI
+        run: npm install -g @marp-team/marp-cli
 
-      - name: Build RevealJS presentation
-        run: npm run build
+      - name: Build HTML
+        run: marp slides.md -o build/index.html
 
-      - name: Upload HTML slides
+      - name: Build PDF
+        run: marp slides.md -o build/slides.pdf
+
+      - name: Build PPTX
+        run: marp slides.md -o build/slides.pptx
+
+      - name: Upload HTML
         uses: actions/upload-artifact@v4
         with:
           name: slides-html
           path: build/index.html
 
-      - name: Upload PDF slides
+      - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
           name: slides-pdf
           path: build/slides.pdf
 
-      - name: Upload PPTX slides
+      - name: Upload PPTX
         uses: actions/upload-artifact@v4
         with:
           name: slides-pptx
