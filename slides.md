@@ -1,42 +1,45 @@
 ---
 marp: true
-theme: campus-compass
-size: 16:9
+theme: default
 paginate: true
-math: katex
-header: "Product Documentation — Marp"
-footer: "Page $[current] / $[total] • 24f2004718@ds.study.iitm.ac.in"
+class: lead
 ---
 
-<!-- _class: lead -->
+# Product Documentation Presentation
 
-# Product Documentation with Marp
-
-Maintainable • Version Controlled • Multi-format
-
+**Prepared by:** 24f2004718@ds.study.iitm.ac.in  
 
 ---
 
-## Why Marp?
+# Agenda
 
-- **Markdown-first**
-- **Version controlled**
-- **Exportable**: HTML, PDF, PPTX
-- **Custom themes**
-
-Email: **24f2004718@ds.study.iitm.ac.in**
-
+1. Introduction  
+2. Features  
+3. Architecture  
+4. Complexity Analysis  
+5. Conclusion  
 
 ---
 
-## Math Example
+<!-- _background: url('./e3550a4f-83bc-4d7a-90b8-cd89fd46bcd4.png') -->
 
-Sorting: $T(n) = O(n \log n)$
+# With Background Image
+
+This slide uses a **custom background image** 🎨
+
+---
+
+# Algorithmic Complexity
+
+We analyze complexity using Big-O notation:
 
 $$
-T(n) =
-\begin{cases}
-1, & n = 1 \\\\
-2T(n/2) + \Theta(n), & n > 1
-\end{cases}
+T(n) = O(n \log n)
 $$
+
+---
+
+# Thank You 🎉
+
+Prepared by: **24f2004718@ds.study.iitm.ac.in**
+
