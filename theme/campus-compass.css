@@ -1,0 +1,14 @@
+@theme campus-compass;
+
+section {
+  background: #0b1220;
+  color: #e6edf6;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+h1, h2, h3 { color: #22d3ee; }
+
+footer {
+  font-size: 0.8em;
+  color: #9aa7b2;
+}
