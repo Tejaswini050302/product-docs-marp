@@ -1,34 +1,44 @@
-name: Build Marp Slides
+name: Build Slides
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # Install Marp CLI via npm (more reliable than action wrapper)
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '18'
 
-      - name: Install Marp CLI
-        run: npm install -g @marp-team/marp-cli
+      - name: Install dependencies
+        run: npm install
 
-      - name: Build slides (PDF, HTML, PPTX)
-        run: |
-          mkdir -p build
-          marp slides.md --theme theme/campus-compass.css --allow-local-files --math -o build/slides.pdf
-          marp slides.md --theme theme/campus-compass.css --allow-local-files --math -o build/slides.html
-          marp slides.md --theme theme/campus-compass.css --allow-local-files --math -o build/slides.pptx
+      - name: Build RevealJS presentation
+        run: npm run build
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+      - name: Upload HTML slides
+        uses: actions/upload-artifact@v4
         with:
-          name: marp-slides
-          path: build/
+          name: slides-html
+          path: build/index.html
+
+      - name: Upload PDF slides
+        uses: actions/upload-artifact@v4
+        with:
+          name: slides-pdf
+          path: build/slides.pdf
+
+      - name: Upload PPTX slides
+        uses: actions/upload-artifact@v4
+        with:
+          name: slides-pptx
+          path: build/slides.pptx
